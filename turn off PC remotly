@@ -1,0 +1,19 @@
+alias: pc
+description: ""
+trigger:
+  - platform: state
+    entity_id:
+      - binary_sensor.presence_sensor_fp2_67eb_presence_sensor_2
+    from: null
+    to: "off"
+    for:
+      hours: 1
+      minutes: 0
+      seconds: 0
+condition: []
+action:
+  - type: turn_off
+    device_id: 6aa6e834ab512d7505b4fe46b2541ce9
+    entity_id: 1de02d6ceaaaf72376ac6484a08af042
+    domain: switch
+mode: single
