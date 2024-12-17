@@ -1,0 +1,32 @@
+alias: TURN ON TV
+description: ""
+trigger:
+  - platform: device
+    type: turned_on
+    device_id: c03e402770470983337a7efc713db144
+    entity_id: 037169325544d78150c21c328d571fe4
+    domain: remote
+condition: []
+action:
+  - action: light.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+        - light.bed_2
+        - light.bedroom_2
+        - light.bedroom_hallway_1_2
+        - light.bedroom_hallway_2_2
+        - light.desk_2
+        - light.vikrams_room_2
+  - action: light.turn_on
+    metadata: {}
+    data:
+      rgb_color:
+        - 255
+        - 109
+        - 84
+      brightness_pct: 25
+    target:
+      device_id: 8666b6395471bea03c828b3aa0525965
+mode: single
