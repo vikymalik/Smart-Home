@@ -1,0 +1,57 @@
+alias: phone to sonos final
+description: ""
+trigger:
+  - platform: state
+    entity_id:
+      - binary_sensor.presence_sensor_fp2_67eb_presence_sensor_4
+    from: null
+    to: "on"
+condition:
+  - condition: state
+    entity_id: media_player.spotify_vikymalik
+    state: playing
+  - condition: or
+    conditions:
+      - condition: device
+        device_id: e67c527f764686a0b9e9aff593b263d6
+        domain: media_player
+        entity_id: 82c9d42347edab56cbc351e5c8cec331
+        type: is_idle
+      - condition: device
+        device_id: e67c527f764686a0b9e9aff593b263d6
+        domain: media_player
+        entity_id: 82c9d42347edab56cbc351e5c8cec331
+        type: is_paused
+action:
+  - if:
+      - condition: state
+        entity_id: media_player.vikrams_room
+        state: playing
+    then:
+      - action: todo.remove_completed_items
+        metadata: {}
+        data: {}
+    else:
+      - action: spotifyplus.player_transfer_playback
+        metadata: {}
+        data:
+          entity_id: media_player.spotifyplus_vikymalik
+          device_id: vikram’s room
+      - sequence:
+          - action: media_player.media_pause
+            metadata: {}
+            data: {}
+            target:
+              entity_id: media_player.vikrams_room
+          - action: media_player.media_play
+            metadata: {}
+            data: {}
+            target:
+              entity_id: media_player.vikrams_room
+          - action: media_player.volume_set
+            metadata: {}
+            data:
+              volume_level: 0.25
+            target:
+              entity_id: media_player.vikrams_room
+mode: single
