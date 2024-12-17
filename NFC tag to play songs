@@ -1,0 +1,33 @@
+alias: NFC tag automation
+description: ""
+trigger:
+  - platform: event
+    event_type: NFC_transfer_to_sonos
+condition: []
+action:
+  - action: spotifyplus.player_transfer_playback
+    metadata: {}
+    data:
+      entity_id: media_player.spotifyplus_vikymalik
+      device_id: vikram’s room
+      play: true
+  - sequence:
+      - action: media_player.media_pause
+        metadata: {}
+        data: {}
+        target:
+          entity_id: media_player.vikrams_room
+      - action: media_player.media_play
+        metadata: {}
+        data: {}
+        target:
+          entity_id: media_player.vikrams_room
+      - action: media_player.volume_set
+        metadata: {}
+        data:
+          volume_level: 0.2
+        target:
+          entity_id: media_player.vikrams_room
+mode: single
+
+
