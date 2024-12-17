@@ -1,0 +1,29 @@
+alias: morning
+description: ""
+trigger:
+  - platform: state
+    entity_id:
+      - sensor.lol_battery_state
+    from: null
+    to: Not Charging
+condition:
+  - condition: time
+    after: "05:00:00"
+    before: "14:00:00"
+action:
+  - action: light.turn_on
+    metadata: {}
+    data:
+      brightness_pct: 100
+      rgb_color:
+        - 255
+        - 255
+        - 255
+    target:
+      device_id:
+        - 65477b2cdb2fe53ddea38e7689f968de
+        - 5cdbc3b56f2ee765aeeda38a17cff54a
+        - 8666b6395471bea03c828b3aa0525965
+mode: single
+
+
