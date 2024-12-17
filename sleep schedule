@@ -1,0 +1,52 @@
+alias: sleep time
+description: ""
+trigger:
+  - platform: state
+    entity_id:
+      - binary_sensor.presence_sensor_fp2_67eb_presence_sensor_3
+    from: null
+    to: "on"
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 0
+  - platform: state
+    entity_id:
+      - sensor.lol_battery_state
+    from: null
+    to: Charging
+    enabled: false
+condition:
+  - condition: time
+    after: "22:00:00"
+    before: "06:00:00"
+  - condition: state
+    entity_id: sensor.lol_battery_state
+    state: Charging
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 5
+action:
+  - action: light.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+        - light.bed_2
+        - light.bedroom_2
+        - light.bedroom_hallway_1_2
+        - light.bedroom_hallway_2_2
+        - light.desk_2
+        - light.vikrams_room_2
+  - action: light.turn_on
+    metadata: {}
+    data:
+      rgb_color:
+        - 255
+        - 109
+        - 84
+      brightness_pct: 25
+    target:
+      device_id: 8666b6395471bea03c828b3aa0525965
+mode: single
