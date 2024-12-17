@@ -1,0 +1,14 @@
+alias: hallway lights
+description: ""
+use_blueprint:
+  path: homeassistant/motion_light.yaml
+  input:
+    motion_entity: binary_sensor.presence_sensor_fp2_67eb_presence_sensor_4
+    light_target:
+      device_id:
+        - 66e6b3b708fe5bee107d600e5805c7ef
+        - da7a001d5a6bc46e87d43859b41942d0
+        - 0d880035657c0f355b292c4c04b00bd8
+    no_motion_wait: 5
+
+
