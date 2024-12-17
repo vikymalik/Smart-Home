@@ -1,0 +1,17 @@
+alias: desk light on
+description: ""
+trigger:
+  - platform: state
+    entity_id:
+      - binary_sensor.presence_sensor_fp2_67eb_presence_sensor_2
+    from: null
+    to: "on"
+condition: []
+action:
+  - type: turn_on
+    device_id: 28c9ce0e1aafd135fbeb04525d035105
+    entity_id: 67742056aa46ecf95822dc7f5466b390
+    domain: light
+mode: single
+
+
