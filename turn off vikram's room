@@ -1,0 +1,26 @@
+alias: turn off vikram’s room
+description: ""
+trigger:
+  - platform: state
+    entity_id:
+      - binary_sensor.presence_sensor_fp2_67eb_presence_sensor_1
+    from: null
+    to: "off"
+    for:
+      hours: 0
+      minutes: 2
+      seconds: 0
+condition: []
+action:
+  - action: light.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+        - light.bed_2
+        - light.bedroom_2
+        - light.bedroom_hallway_1_2
+        - light.bedroom_hallway_2_2
+        - light.desk_2
+        - light.vikrams_room_2
+mode: single
