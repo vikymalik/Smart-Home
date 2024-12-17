@@ -1,0 +1,9 @@
+alias: living room lights
+description: ""
+use_blueprint:
+  path: homeassistant/motion_light.yaml
+  input:
+    motion_entity: binary_sensor.presence_sensor_fp2_d1f7_presence_sensor_2
+    light_target:
+      entity_id: light.floor_lamp_2
+    no_motion_wait: 300
