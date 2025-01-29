@@ -1,0 +1,37 @@
+alias: tv off
+description: ""
+triggers:
+  - trigger: state
+    entity_id:
+      - media_player.vikram_s_tv
+    from: null
+    to: standby
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 5
+conditions:
+  - condition: time
+    after: "10:00:00"
+    before: "00:00:00"
+actions:
+  - action: light.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+        - light.vikrams_room_2
+  - action: light.turn_off
+    metadata: {}
+    data: {}
+    target:
+      device_id: 8666b6395471bea03c828b3aa0525965
+  - action: automation.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+        - automation.new_automation_2
+        - automation.hallway_lights
+        - automation.vikram_s_room_lights
+mode: single
